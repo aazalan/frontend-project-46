@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import { readFileSync } from 'fs';
-import { cwd } from 'process';
 import path from 'path';
 
 
@@ -16,7 +15,6 @@ export const  getDifference = (path1, path2) => {
     const sortedFile2 = makeObjectFromFile(path2);
     const keys = _.uniq(Object.keys(sortedFile1).concat(Object.keys(sortedFile2)).sort());
     const difference = keys.reduce((acc, key) => {
-        let str = '';
         if (Object.hasOwn(sortedFile2, key)) {
              if (Object.hasOwn(sortedFile1, key)) {
                 if (sortedFile1[key] === sortedFile2[key]){
