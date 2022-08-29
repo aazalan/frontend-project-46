@@ -1,13 +1,30 @@
 import _ from 'lodash';
 import { readFileSync } from 'fs';
 import path from 'path';
+import yaml from 'js-yaml';
 
 
 const makeObjectFromFile = (pathToFile) => {
     const currentDir = process.cwd();
     const fullPath = path.resolve(currentDir, pathToFile);
-    const file = JSON.parse(readFileSync(fullPath));
-    return file;
+    const extension = path.extname(pathToFile);
+    switch(extension) {
+        case '.json':
+            return JSON.parse(readFileSync(fullPath));
+        case '.yml':
+            return yaml.load(readFileSync(fullPath, 'utf8'));
+    }
+}
+
+const makeFormatedInput = (input) => {
+    const stringFormatInput = Object.keys(input)
+        .reduce((acc, key) => {
+        const str = ` ${key}: ${input[key]}`;
+        acc.push(str);
+        return acc;
+    }, [])
+        .join(',\n');
+    return `{\n${stringFormatInput}\n}`;
 }
 
 export const  getDifference = (path1, path2) => {
@@ -35,5 +52,5 @@ export const  getDifference = (path1, path2) => {
         return acc;
     }, {});
 
-    return (difference);
+    return makeFormatedInput(difference);
 }

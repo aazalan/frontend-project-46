@@ -1,16 +1,17 @@
 import { getDifference } from "../src";
+import { readFileSync } from 'fs';
 
-const path1 = '__fixtures__/file1.json';
-const path2 = '__fixtures__/file2.json';
-const output = {
-  '- follow': false,
-  '  host': 'hexlet.io',
-  '- proxy': '123.234.53.22',
-  '- timeout': 50,
-  '+ timeout': 20,
-  '+ verbose': true
-}
 
-test('gendiff', () => {
+const output = readFileSync('__fixtures__/correct_output', 'utf8');
+
+test('gendiff for .json', () => {
+    const path1 = '__fixtures__/file1.json';
+    const path2 = '__fixtures__/file2.json';
     expect(getDifference(path1, path2)).toEqual(output);
 });
+
+test('gendiff for .yml', () => {
+    const path1 = '__fixtures__/file1.yml';
+    const path2 = '__fixtures__/file2.yml';
+    expect(getDifference(path1, path2)).toEqual(output);
+}); 
