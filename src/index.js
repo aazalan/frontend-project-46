@@ -1,7 +1,8 @@
-import _ from 'lodash';
 import { readFileSync } from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
+import { getDifferencePlain } from './plain.js';
+import { getDifferenceRecursively } from './recursive.js';
 
 
 const makeObjectFromFile = (pathToFile) => {
@@ -16,7 +17,7 @@ const makeObjectFromFile = (pathToFile) => {
     }
 }
 
-const makeFormatedInput = (input) => {
+const stringifyObject = (input) => {
     const stringFormatInput = Object.keys(input)
         .reduce((acc, key) => {
         const str = ` ${key}: ${input[key]}`;
@@ -28,29 +29,11 @@ const makeFormatedInput = (input) => {
 }
 
 export const  getDifference = (path1, path2) => {
-    const sortedFile1 = makeObjectFromFile(path1);
-    const sortedFile2 = makeObjectFromFile(path2);
-    const keys = _.uniq(Object.keys(sortedFile1).concat(Object.keys(sortedFile2)).sort());
-    const difference = keys.reduce((acc, key) => {
-        if (Object.hasOwn(sortedFile2, key)) {
-             if (Object.hasOwn(sortedFile1, key)) {
-                if (sortedFile1[key] === sortedFile2[key]){
-                    acc[`  ${key}`] = sortedFile1[key];
-                }
-                else if (sortedFile1[key] !== sortedFile2[key]){
-                    acc[`- ${key}`] = sortedFile1[key];
-                    acc[`+ ${key}`] = sortedFile2[key];
-                }
-             }
-             else { //(Object.hasOwn(sortedFile2, key) && !Object.hasOwn(sortedFile1, key))
-                acc[`+ ${key}`] = sortedFile2[key];
-            }          
-        }
-        if (!Object.hasOwn(sortedFile2, key) && Object.hasOwn(sortedFile1, key)){
-            acc[`- ${key}`] = sortedFile1[key];
-        }
-        return acc;
-    }, {});
-
-    return makeFormatedInput(difference);
+    const object1 = makeObjectFromFile(path1);
+    const object2 = makeObjectFromFile(path2);
+    const difference = getDifferenceRecursively(object1, object2);
+    return JSON.stringify(difference);
+    // return stringifyObject(difference);
 }
+
+console.log(getDifference('__fixtures__/file1.tree.json', '__fixtures__/file2.tree.json'))
