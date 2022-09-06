@@ -99,3 +99,30 @@ export const getDifferenceRecursively = (object1, object2) => {
 //     console.log('DIFF:\n', difference, '\n\n');
 //     return { ...difference };
 // }
+
+
+const makeArrayFromObject = (input) => {
+    const stringFormatInput = Object.keys(input)
+        .reduce((acc, key) => {
+            if (_.isObject(input[key])){
+                acc.push(`${key}: `, stringifyObject({...input[key]}));
+                
+            }
+
+            const str = `${key}: ${input[key]}`;
+            acc.push(str);
+            console.log('STR:', str, '\n\nACC:', acc)
+            return acc;
+        }, []);
+        console.log('inp: ', stringFormatInput)
+        return ['{',...stringFormatInput, '}'];
+        //return ['{', ...stringFormatInput, '}'];
+}
+
+
+
+export const stringifyObject = (input) => {
+    const objectToArray = makeArrayFromObject(input);
+    const objectToString = objectToArray.join('\n');
+    console.log(objectToString)
+}
