@@ -12,3 +12,6 @@ test-coverage:
 
 gendiff:
 	gendiff __fixtures__/file1.tree.json __fixtures__/file2.tree.json
+
+gendiff_pl:
+	gendiff --format plain __fixtures__/file1.tree.json __fixtures__/file2.tree.json
