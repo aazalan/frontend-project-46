@@ -23,6 +23,7 @@ export const  getDifference = (path1, path2, typeFormat) => {
     const object2 = makeObjectFromFile(path2);
     const inputFormat = typeFormat.format;
     const difference = getDifferenceRecursively(object1, object2, inputFormat);
+    console.log(difference)
     switch(inputFormat) {
         case 'stringify':
             return stringifyObject(difference);
@@ -35,4 +36,4 @@ export const  getDifference = (path1, path2, typeFormat) => {
     }
 }
 
-//console.log(getDifference('__fixtures__/file1.tree.json', '__fixtures__/file2.tree.json', {format: 'stringify'}));
+console.log(getDifference('__fixtures__/file1.tree.json', '__fixtures__/file2.tree.json', {format: 'stringify'}));
