@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 export const stringifyObject = (input, counter = 0) => {
     const tab = '    ';
-    const arrayFormatInput = Object.keys(input)
+    const stringFormatInput = Object.keys(input)
         .reduce((acc, key) => {
             if (_.isObject(input[key])) {
                 acc.push( '\n', tab.repeat(counter), `  ${key}: `, `${stringifyObject({...input[key]}, counter+=1)}`);
@@ -15,5 +15,5 @@ export const stringifyObject = (input, counter = 0) => {
             return acc;
         }, [])
         .join('');
-    return ['{', `${arrayFormatInput}`, '\n', tab.repeat(counter), '}'].join('');
+    return ['{', `${stringFormatInput}`, '\n', tab.repeat(counter), '}'].join('');
 }

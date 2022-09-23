@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 export const makePlainFormatObject = (input) => {
-    const arrayFormatInput = Object.keys(input)
+    const plainFormatInput = Object.keys(input)
         .reduce((acc, key) => {
             if (_.isObject(input[key])) {
                acc.push( makePlainFormatObject(input[key]));
@@ -12,5 +12,5 @@ export const makePlainFormatObject = (input) => {
             return acc;
         }, [])
             .join('\n');
-        return [arrayFormatInput].join('\n');
+        return [plainFormatInput].join('\n');
 }
