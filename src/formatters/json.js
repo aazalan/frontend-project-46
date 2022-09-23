@@ -5,7 +5,7 @@ export const makeJsonFormatObject = (input, counter = 0) => {
     const jsonFormatInput = Object.keys(input)
         .reduce((acc, key) => {
             if (_.isObject(input[key])) {
-                acc.push( '\n', tab.repeat(counter), `  "${key}": `, `${makeJsonFormatObject({...input[key]}, counter+=1)},`);
+                acc.push( '\n', tab.repeat(counter), `  "${key}": `, `${ makeJsonFormatObject({...input[key]}, counter+=1) },`);
                 counter -= 1;
             }
             else {
@@ -13,12 +13,10 @@ export const makeJsonFormatObject = (input, counter = 0) => {
                 const str = '\n'+ tab.repeat(counter) + `  "${key}": ${formatedValue},`;
                 acc.push(str);
             }
-            //console.log(acc)
             return acc;
         }, [])
         .join('')
         .slice(0, -1);
-        //console.log(jsonFormatInput)
     return ['{', `${jsonFormatInput}`, '\n', tab.repeat(counter), '}'].join('');
 }
 

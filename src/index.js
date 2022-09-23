@@ -34,5 +34,3 @@ export const  getDifference = (path1, path2, typeFormat) => {
             return stringifyObject(difference);
     }
 }
-
-//console.log(getDifference('__fixtures__/file1.tree.json', '__fixtures__/file2.tree.json', {format: 'json'}));

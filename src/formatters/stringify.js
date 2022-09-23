@@ -5,7 +5,7 @@ export const stringifyObject = (input, counter = 0) => {
     const stringFormatInput = Object.keys(input)
         .reduce((acc, key) => {
             if (_.isObject(input[key])) {
-                acc.push( '\n', tab.repeat(counter), `  ${key}: `, `${stringifyObject({...input[key]}, counter+=1)}`);
+                acc.push( '\n', tab.repeat(counter), `  ${key}: `, `${ stringifyObject({...input[key]}, counter+=1) }`);
                 counter -= 1;
             }
             else {
