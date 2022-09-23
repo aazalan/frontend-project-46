@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 const outputPlain = readFileSync('__fixtures__/correct_output', 'utf8');
 const outputTree = readFileSync('__fixtures__/correct_output_tree', 'utf8');
 const outputList = readFileSync('__fixtures__/correct_output_plain', 'utf8');
-const outputJson = readFileSync('__fixtures__/correct_output_json', 'utf8')
+const outputJson = readFileSync('__fixtures__/correct_output_json.json', 'utf8')
 
 describe('stringify format', () => {
     const formatType = { format: 'stringify'};
