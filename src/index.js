@@ -18,13 +18,13 @@ const makeObjectFromFile = (pathToFile) => {
     }
 }
 
-const getDifference = (path1, path2, typeFormat = { format: 'stringify'}) => {
+const getDifference = (path1, path2, typeFormat = { format: 'stylish'}) => {
     const object1 = makeObjectFromFile(path1);
     const object2 = makeObjectFromFile(path2);
     const inputFormat = typeFormat.format;
     const difference = getDifferenceRecursively(object1, object2, inputFormat);
     switch(inputFormat) {
-        case 'stringify':
+        case 'stylish':
             return stringifyObject(difference);
         case 'plain':
             return makePlainFormatObject(difference);

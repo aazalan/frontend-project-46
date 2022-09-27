@@ -7,7 +7,7 @@ const outputList = readFileSync('__fixtures__/correct_output_plain', 'utf8');
 const outputJson = readFileSync('__fixtures__/correct_output_json.json', 'utf8')
 
 describe('stringify format', () => {
-    const formatType = { format: 'stringify'};
+    const formatType = { format: 'stylish'};
     test('gendiff for .json', () => {
         const path1 = '__fixtures__/file1.json';
         const path2 = '__fixtures__/file2.json';
