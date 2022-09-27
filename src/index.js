@@ -18,7 +18,7 @@ const makeObjectFromFile = (pathToFile) => {
     }
 }
 
-const getDifference = (path1, path2, typeFormat) => {
+const getDifference = (path1, path2, typeFormat = { format: 'stringify'}) => {
     const object1 = makeObjectFromFile(path1);
     const object2 = makeObjectFromFile(path2);
     const inputFormat = typeFormat.format;
@@ -30,8 +30,6 @@ const getDifference = (path1, path2, typeFormat) => {
             return makePlainFormatObject(difference);
         case 'json':
             return makeJsonFormatObject(difference);
-        case undefined:
-            return stringifyObject(difference);
     }
 }
 
