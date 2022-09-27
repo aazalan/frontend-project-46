@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from "commander/esm.mjs";
-import { getDifference } from '../src/index.js'
+import { getDifference } from '../src/index.js';
 
 const program = new Command;
 
@@ -14,4 +14,4 @@ program
   .action((filepath1, filepath2, type) => {
     console.log(getDifference(filepath1, filepath2, type));
   })
-  .parse(process.argv);
+  .parse();
