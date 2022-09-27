@@ -18,8 +18,7 @@ export const getDifferenceRecursively = (object1, object2, format, pathToKey = [
         if (_.isObject(object2[key]) && format !== 'plain') {
             pathToKey.push(key);
             if (Object.hasOwn(object1, key)) {
-                return { ...acc, [`- ${key}`]:{ ...getDifferenceRecursively(object2[key], object2[key], format, pathToKey) },
-                [`+ ${key}`]: object1[key] };
+                return { ...acc, [`- ${key}`]: object1[key], [`+ ${key}`]:{ ...getDifferenceRecursively(object2[key], object2[key], format, pathToKey) }};
             }
             return { ...acc, [`+ ${key}`]:{ ...getDifferenceRecursively(object2[key], object2[key], format, pathToKey)} };
         }
