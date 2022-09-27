@@ -18,7 +18,7 @@ const makeObjectFromFile = (pathToFile) => {
     }
 }
 
-export const  getDifference = (path1, path2, typeFormat) => {
+const getDifference = (path1, path2, typeFormat) => {
     const object1 = makeObjectFromFile(path1);
     const object2 = makeObjectFromFile(path2);
     const inputFormat = typeFormat.format;
@@ -34,3 +34,5 @@ export const  getDifference = (path1, path2, typeFormat) => {
             return stringifyObject(difference);
     }
 }
+
+export default getDifference;

@@ -1,4 +1,4 @@
-import { getDifference } from "../src";
+import getDifference from "../src";
 import { readFileSync } from 'fs';
 
 const outputPlain = readFileSync('__fixtures__/correct_output', 'utf8');
