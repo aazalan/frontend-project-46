@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { Command } from "commander/esm.mjs";
+import { Command } from 'commander/esm.mjs';
 import getDifference from '../src/index.js';
 
-const program = new Command;
+const program = new Command();
 
 program
   .version('0.0.1', '-V, --version', 'output the version number')
@@ -12,7 +12,7 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((filepath1, filepath2, type) => {
-    const format = type.format;
+    const { format } = type;
     console.log(getDifference(filepath1, filepath2, format));
   })
   .parse();
