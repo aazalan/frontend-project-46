@@ -18,12 +18,11 @@ const makeObjectFromFile = (pathToFile) => {
     }
 }
 
-const getDifference = (path1, path2, typeFormat = { format: 'stylish'}) => {
+const getDifference = (path1, path2, typeFormat = 'stylish') => {
     const object1 = makeObjectFromFile(path1);
     const object2 = makeObjectFromFile(path2);
-    const inputFormat = typeFormat.format;
-    const difference = getDifferenceRecursively(object1, object2, inputFormat);
-    switch(inputFormat) {
+    const difference = getDifferenceRecursively(object1, object2, typeFormat);
+    switch(typeFormat) {
         case 'stylish':
             return stringifyObject(difference);
         case 'plain':
@@ -34,3 +33,5 @@ const getDifference = (path1, path2, typeFormat = { format: 'stylish'}) => {
 }
 
 export default getDifference;
+
+//console.log(getDifference('__fixtures__/file1.tree.json', '__fixtures__/file2.tree.json',  'stylish'))

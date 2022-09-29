@@ -12,6 +12,7 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .action((filepath1, filepath2, type) => {
-    console.log(getDifference(filepath1, filepath2, type));
+    const format = type.format;
+    console.log(getDifference(filepath1, filepath2, format));
   })
   .parse();
