@@ -2,21 +2,21 @@
 CLI tool detect difference between two files. Works with JSON and YAML format. Can show difference in 3 formats: stylish(default), plain, JSON.
 
 Installation: 
-```javascript
+```
 make install
 ```
 Using:
-```javascript
+```
 gendiff filepath1.json filepath2.json
 ```
 
 For plain format output result:
-```javascript
+```
 gendiff --format plain filepath1.json filepath2.json
 ```
 
 For JSON format output result:
-```javascript
+```
 gendiff --format json filepath1.json filepath2.json
 ```
 
