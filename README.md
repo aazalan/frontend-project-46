@@ -1,6 +1,27 @@
+###Gendiff
+CLI tool detect difference between two files. Works with JSON and YAML format. Can show difference in 3 formats: stylish(default), plain, JSON.
+
+Installation: 
+```javascript
+make install
+```
+Using:
+```javascript
+gendiff filepath1.json filepath2.json
+```
+
+For plain format output result:
+```javascript
+gendiff --format plain filepath1.json filepath2.json
+```
+
+For JSON format output result:
+```javascript
+gendiff --format json filepath1.json filepath2.json
+```
 
 
-### Maintainability and test coverage
+#### Maintainability and test coverage
 [![Maintainability](https://api.codeclimate.com/v1/badges/e96a6fa3f6f1c360d0d1/maintainability)](https://codeclimate.com/github/aazalan/frontend-project-46/maintainability)
 [![Test coverage](https://api.codeclimate.com/v1/badges/e96a6fa3f6f1c360d0d1/test_coverage)](https://codeclimate.com/github/aazalan/frontend-project-46/test_coverage)
 
