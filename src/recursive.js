@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { checkTypeOfValue } from './check_type.js';
 
 export const getDifferenceRecursively = (object1, object2, format, pathToKey = []) => {
   const keys = _.uniq(Object.keys(object1).concat(Object.keys(object2)).sort());
@@ -10,10 +11,8 @@ export const getDifferenceRecursively = (object1, object2, format, pathToKey = [
     if (_.isObject(object1[key]) && format !== 'plain') {
       pathToKey.push(key);
       if (Object.hasOwn(object2, key)) {
-        return {
-          ...acc,
-          [`- ${key}`]: { ...getDifferenceRecursively(object1[key], object1[key], format, pathToKey) },
-          [`+ ${key}`]: object2[key],
+        return {...acc, [`- ${key}`]: { ...getDifferenceRecursively(object1[key], object1[key], format, pathToKey) },
+        [`+ ${key}`]: object2[key],
         };
       }
       return { ...acc, [`- ${key}`]: { ...getDifferenceRecursively(object1[key], object1[key], format, pathToKey) } };
@@ -53,8 +52,8 @@ const makeNewPropertyStringify = (object1, object2, key, acc) => {
 
 const makeNewPropertyPlain = (object1, object2, key, acc, pathToKey) => {
   const stringPath = pathToKey.length > 0 ? `${pathToKey.join('.')}.` : '';
-  const object1Key = _.isObject(object1[key]) ? '[complex value]' : (_.isBoolean(object1[key]) || object1[key] === null || _.isNumber(object1[key])) ? `${object1[key]}` : `'${object1[key]}'`;
-  const object2Key = _.isObject(object2[key]) ? '[complex value]' : (_.isBoolean(object2[key]) || object2[key] === null || _.isNumber(object2[key])) ? `${object2[key]}` : `'${object2[key]}'`;
+  const object1Key = checkTypeOfValue(object1[key]);
+  const object2Key = checkTypeOfValue(object2[key]);
   if (Object.hasOwn(object2, key)) {
     if (Object.hasOwn(object1, key)) {
       if (object1[key] === object2[key]) {
