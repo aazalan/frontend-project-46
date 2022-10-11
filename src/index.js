@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
-import { getDifferenceRecursively } from './recursive.js';
+import { getDifferenceRecursively } from './inner_structure/recursive.js';
 import { stringifyObject } from './formatters/stringify.js';
 import { makePlainFormatObject } from './formatters/plain.js';
 import { makeJsonFormatObject } from './formatters/json.js';
