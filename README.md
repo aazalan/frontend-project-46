@@ -19,7 +19,8 @@ For JSON format output result:
 ```
 gendiff --format json filepath1.json filepath2.json
 ```
-
+#### There you can see how it works:
+[![asciicast](https://asciinema.org/a/527351.svg)](https://asciinema.org/a/527351)
 
 #### Maintainability and test coverage
 [![Maintainability](https://api.codeclimate.com/v1/badges/e96a6fa3f6f1c360d0d1/maintainability)](https://codeclimate.com/github/aazalan/frontend-project-46/maintainability)
