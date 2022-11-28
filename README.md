@@ -1,4 +1,4 @@
-### Gendiff
+# Gendiff
 CLI tool detect difference between two files. Works with JSON and YAML format. Can show difference in 3 formats: stylish(default), plain, JSON.
 
 Installation: 
